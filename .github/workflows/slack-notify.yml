@@ -6,7 +6,16 @@ on:
     branches: [ main ]
     
 jobs:
+  sleep:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Sleep for 30 seconds
+      uses: whatnick/wait-action@master
+      with:
+        time: '30s'
+
   slackNotification:
+    needs: sleep
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
